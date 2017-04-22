@@ -3,6 +3,7 @@
 *.lo
 *.o
 *.obj
+Base64Encode
 
 # Precompiled Headers
 *.gch
