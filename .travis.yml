@@ -1,0 +1,13 @@
+sudo: required
+os: linux
+
+language: cpp
+
+compiler:
+  - gcc
+  - clang
+
+install: true
+
+script:
+  make build
