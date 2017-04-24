@@ -5,43 +5,42 @@
 #include <vector>
 #include <cmath>
 #include <sstream>
+#include <numeric>
 
 using namespace std;
 
 // Encode class
 class Encode {
 	public:
-		vector<int> Binary_convert(string bit_stream);
-		string BYTE_Split();
+		string BYTE_Split(string bit_stream);
+		int Binary_convert(string bit_stream);
 		void Char_Map();
 };
 
-/* [Bit strem spliter]
+/* [Bit stream spliter]
  * @param {string} byte stream (8 bit binary string)
  * @return six binary string
  */
-string Encode::BYTE_Split(){
-	string bit_stream;
-	
-	for(int i = 0; i < 6; i++){
-		bit_stream += i; // TODO replace with <map k, v>
-	}
-	return bit_stream;
+string Encode::BYTE_Split(string bit_stream){
+	return bit_stream.substr(0, 6);
 }
-vector<int> Encode::Binary_convert(string bit_stream){
+int Encode::Binary_convert(string bit_stream){
 	int number;
 	vector<int> temp, output;
 	vector<int>::iterator it;
 
 	stringstream iss( bit_stream );
-	while ( iss >> number )
+	while ( iss >> number ){
 		temp.push_back( number );
-	
+	}
 	for(it = temp.begin(); it != temp.end(); it++){
 		int _P = *it;
 		output.push_back(temp.at(_P) * pow(2, _P));
 	}
-	return output;
+	auto _out = accumulate( output.begin(), output.end(), 0, []( int l, int r ) {
+    	return l * 10 + r; 
+	} );
+	return _out;
 }
 
 // construct character map

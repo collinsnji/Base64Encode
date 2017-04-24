@@ -5,7 +5,7 @@
 #include "BaseEncode.h"
 
 // encode class
-class Base64Encode: public Encode {
+class Base64Encode{
 	public:
 		int Convert_Ascii(char ASCII);
 		std::string Convert_Bin(int Convert_Ascii);

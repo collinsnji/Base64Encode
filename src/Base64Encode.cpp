@@ -6,12 +6,14 @@ using namespace std;
 
 int main(){	
 	Base64Encode Q;
-	
-	for (char i = 65; i <= 91; i++){
-		int N = Q.Convert_Ascii(i);
-		string T = Q.Convert_Bin(N);
-		cout << T << endl;
-		cout << "Initiating splinter sequence..." << endl;
-	}
+	Encode S;
+	Encode R;
+
+	int N = Q.Convert_Ascii('A');
+	string T = Q.Convert_Bin(N);
+	string V = S.BYTE_Split(T);
+	cout << R.Binary_convert(V) << endl;
+
+	// cout << "Initiating splinter sequence..." << endl;
 	return 0;
 }
