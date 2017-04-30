@@ -18,3 +18,7 @@ compiler:
 
 script:
   make build
+
+after_script:
+  make test
+  
