@@ -28,3 +28,6 @@ Base64Encode
 *.exe
 *.out
 *.app
+
+# VS Code config
+.vscode

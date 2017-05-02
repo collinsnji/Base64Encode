@@ -10,3 +10,4 @@ clean:
 	\rm -r src/*.o
 test:
 	./Base64Encode
+	
