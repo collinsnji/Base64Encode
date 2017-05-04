@@ -21,17 +21,24 @@ std::map<const int, std::string> BASE64_CHAR_MAP {
 
 std::string Encode(std::string bitstream){
 	std::string Base64;
-	int i = 0;
+	std::string EncodedString;
+	unsigned int i = 0;
+	int len = bitstream.length() % 6;
 	bool _read = true;
+	if(len > 0){
+		for (int k = 0; k < (6 - len); k++){
+			bitstream = bitstream + "0";
+		}
+	}
 	while(_read){
 		Base64 = bitstream.substr(i, 6);
-		std::cout << BASE64_CHAR_MAP[bitset<32>(Base64).to_ulong()] << std::endl;
+		EncodedString += BASE64_CHAR_MAP[bitset<32>(Base64).to_ulong()];
 		
-		if(i % 6 == 0){
+		if(i % 6 == 0 && i != bitstream.length()){
 		    i += 6;
 		}else { _read = false; }
 	}
-	return EXIT_SUCCESS;
+	return EncodedString;
 }
 
 #endif // ENCODER_H
